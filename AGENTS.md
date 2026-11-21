@@ -29,4 +29,4 @@ use the editor.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
 
-- Auth: email/password via Lovable Cloud; only default auth.users (no profiles table yet). Protected pages live under src/routes/_authenticated/ (client-only gate redirecting to /signin) so signed-out visitors never see private screens.
+- Auth: email/password via Lovable Cloud; only default auth.users (no profiles table yet). Protected pages live behind RequireAuth in src/routes.tsx (client-only gate redirecting to /signin) so signed-out visitors never see private screens.
