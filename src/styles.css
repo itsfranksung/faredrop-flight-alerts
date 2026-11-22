@@ -71,47 +71,53 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-primary-glow: var(--primary-glow);
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-sunset: var(--sunset);
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: oklch(0.13 0.012 285);
-  --foreground: oklch(0.97 0.005 285);
-  --card: oklch(0.17 0.015 285);
-  --card-foreground: oklch(0.97 0.005 285);
-  --popover: oklch(0.17 0.015 285);
-  --popover-foreground: oklch(0.97 0.005 285);
-  --primary: oklch(0.64 0.22 292);
-  --primary-glow: oklch(0.74 0.17 300);
+  --radius: 1rem;
+  /* Sky-and-cloud palette: airy blue-tinted whites, deep navy ink, sky-blue primary, sunset accent. */
+  --background: oklch(0.985 0.006 230);
+  --foreground: oklch(0.25 0.05 258);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.25 0.05 258);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.25 0.05 258);
+  --primary: oklch(0.58 0.18 250);
+  --primary-glow: oklch(0.72 0.14 218);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.22 0.02 285);
-  --secondary-foreground: oklch(0.97 0.005 285);
-  --muted: oklch(0.21 0.015 285);
-  --muted-foreground: oklch(0.7 0.02 285);
-  --accent: oklch(0.25 0.04 292);
-  --accent-foreground: oklch(0.97 0.005 285);
-  --destructive: oklch(0.65 0.2 25);
+  --secondary: oklch(0.96 0.015 240);
+  --secondary-foreground: oklch(0.25 0.05 258);
+  --muted: oklch(0.96 0.012 240);
+  --muted-foreground: oklch(0.5 0.035 255);
+  --accent: oklch(0.94 0.035 238);
+  --accent-foreground: oklch(0.42 0.15 252);
+  --sunset: oklch(0.72 0.17 48);
+  --destructive: oklch(0.6 0.22 25);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(1 0 0 / 9%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.64 0.22 292);
-  --chart-1: oklch(0.64 0.22 292);
-  --chart-2: oklch(0.7 0.15 200);
-  --chart-3: oklch(0.75 0.15 80);
+  --border: oklch(0.91 0.018 240);
+  --input: oklch(0.89 0.02 240);
+  --ring: oklch(0.58 0.18 250);
+  --chart-1: oklch(0.58 0.18 250);
+  --chart-2: oklch(0.72 0.14 218);
+  --chart-3: oklch(0.72 0.17 48);
   --chart-4: oklch(0.65 0.2 340);
   --chart-5: oklch(0.7 0.17 150);
-  --sidebar: oklch(0.15 0.012 285);
-  --sidebar-foreground: oklch(0.97 0.005 285);
-  --sidebar-primary: oklch(0.64 0.22 292);
+  --sidebar: oklch(0.97 0.01 235);
+  --sidebar-foreground: oklch(0.25 0.05 258);
+  --sidebar-primary: oklch(0.58 0.18 250);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.22 0.02 285);
-  --sidebar-accent-foreground: oklch(0.97 0.005 285);
-  --sidebar-border: oklch(1 0 0 / 9%);
-  --sidebar-ring: oklch(0.64 0.22 292);
-  --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% 0%, oklch(0.64 0.22 292 / 28%), transparent 70%);
-  --shadow-glow: 0 10px 40px -10px oklch(0.64 0.22 292 / 55%);
+  --sidebar-accent: oklch(0.94 0.035 238);
+  --sidebar-accent-foreground: oklch(0.25 0.05 258);
+  --sidebar-border: oklch(0.91 0.018 240);
+  --sidebar-ring: oklch(0.58 0.18 250);
+  --gradient-primary: linear-gradient(120deg, var(--primary), var(--primary-glow));
+  --gradient-hero:
+    radial-gradient(ellipse 45% 35% at 85% 8%, oklch(0.9 0.09 70 / 55%), transparent 70%),
+    linear-gradient(180deg, oklch(0.86 0.07 232) 0%, oklch(0.93 0.04 228) 45%, var(--background) 100%);
+  --shadow-glow: 0 12px 32px -12px oklch(0.58 0.18 250 / 55%);
+  --shadow-card: 0 1px 2px oklch(0.25 0.05 258 / 6%), 0 18px 40px -24px oklch(0.25 0.05 258 / 28%);
 }
 
 @layer base {
@@ -149,4 +155,31 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+}
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+/* Boarding-pass perforation: a dashed rule with punched half-circle notches at both ends. */
+@utility ticket-perforation {
+  position: relative;
+  border-top: 2px dashed var(--color-border);
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: -11px;
+    width: 20px;
+    height: 20px;
+    border-radius: 9999px;
+    background: var(--notch, var(--color-background));
+  }
+  &::before { left: -38px; }
+  &::after { right: -38px; }
+}
+@utility cloud {
+  position: absolute;
+  border-radius: 9999px;
+  background: oklch(1 0 0 / 75%);
+  filter: blur(18px);
+  pointer-events: none;
 }
