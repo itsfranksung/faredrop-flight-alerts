@@ -15,8 +15,7 @@ Lovable, not by hand. With the [Lovable MCP](https://mcp.lovable.dev)
 connected, `send_message` asks Lovable to do it; otherwise ask the user to
 use the editor.
 
-- **Database.** Do not add or edit `supabase/migrations/` or `drizzle/`.
-  Ask Lovable to change the schema.
+- **Database.** Lives in the owner's own Supabase project (ref `urnnjydxdtcnsnvjxmjw`).
 - **Generated files.** Do not edit a file whose header says it is automatically
   generated.
 - **AI gateway.** Keep model calls on Lovable's gateway, and keep
@@ -29,4 +28,4 @@ use the editor.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
 
-- Auth: email/password via Lovable Cloud; only default auth.users (no profiles table yet). Protected pages live behind RequireAuth in src/routes.tsx (client-only gate redirecting to /signin) so signed-out visitors never see private screens.
+- Auth: email/password via the project owner's own Supabase project (VITE_SUPABASE_URL / VITE_SUPABASE_PUBLISHABLE_KEY); only default auth.users (no profiles table yet). Protected pages live behind RequireAuth in src/routes.tsx (client-only gate redirecting to /signin) so signed-out visitors never see private screens.
